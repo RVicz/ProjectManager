@@ -1,0 +1,91 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import url(http://fonts.googleapis.com/css?family=Oswald:400,700|Merriweather:400,300);
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ 
+ /* Mixins, variables, etc... */
+ 
+ @mixin nav_link_hover {
+     transition: 0.4s;
+     color: lighten(#222, 30%);
+     text-decoration: none;
+ }
+ 
+ /* Universal styles */
+ 
+ body {
+     font-family: 'Merriweather', serif;
+ }
+ 
+ a {
+     color: darken(#e7e7e7, 70%);
+ }
+ 
+ /* Navbar and navigation styles */
+ 
+ .navbar {
+     font-family: 'Oswald', sans-serif;
+     text-transform: uppercase;
+ }
+ 
+ .navbar-default {
+ 
+     padding-top: 5px;
+     padding-bottom: 5px;
+     background-color: #fff;
+ 
+     .navbar-nav > li > a {
+         color: #222;
+     }
+ 
+     .navbar-link {
+         color: #222;
+     }
+ 
+     .navbar-brand {
+         color: #222;
+         letter-spacing: 1.25px;
+     }
+ 
+ }
+ 
+ /* project styles */
+ 
+ .project {
+     border-bottom: 1px solid #e7e7e7;
+     padding-bottom: 1.5em;
+     .project-title {
+         font-family: 'Oswald', sans-serif;
+         margin-top: 0;
+     }
+     .project-desc {
+         font-size: 1em;
+     }
+     .time-ago {
+         color: darken(#e7e7e7, 50%);
+         font-size: 0.85em;
+         letter-spacing: 1.25;
+     }
+     .project-sub-title {
+         margin-bottom: 0;
+     }
+ }
+ 
+ .project:nth-child(n+1) {
+     padding-top: 1.5em;
+ }
+ 

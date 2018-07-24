@@ -1,0 +1,6 @@
+<%# This is a form partial which is an insertable block of code called by render 'form' %>
+<%= simple_form_for @project do |p|%>
+    <%= p.input :name, label: "Project Name" %>
+    <%= p.input :description, label: "Description" %>
+    <%= p.button :submit%>
+<% end %>

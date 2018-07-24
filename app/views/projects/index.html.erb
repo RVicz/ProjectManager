@@ -1,0 +1,47 @@
+<% if user_signed_in? %>
+    <div class="col-md-6 col-md-offset-3">
+        <% @projects.each do |proj|%>
+            <% if proj.completed? %>
+                <div class="row project">
+                    <div class="col-md-8">
+                        <h2 style="opacity: 0.5;" class="project-title"><strike><%= link_to proj.name, proj%></strike></h2>
+                        <p style="opacity: 0.5;" class="project-desc project-sub-title"><%= proj.description %></p>
+                        <p style="opacity: 0.5;" class="time-ago project-sub_title">Completed <% time_ago_in_words(proj.completed_at) %> ago</p>
+                    </div>
+                    <%# <p><%= link_to "Mark as Complete", complete_project_path(proj), method: :patch %>
+                    <div class="col-md-2">
+                        <p><%= link_to complete_project_path(proj), method: :patch do %></p>
+                            <i class="fa fa-lg fa-check"></i>
+                        <% end %>
+                    </div>
+                    <%# <p><%= link_to "Delete", project_path(proj), method: :delete, data: { confirm: "Are you sure?" }%> 
+                    <div class="col-md-2">
+                        <p><%= link_to project_path(proj), method: :delete, data: { confirm: "Are you sure?" } do %> </p>
+                            <i class="fa fa-lg fa-trash"></i>
+                        <% end %>
+                    </div>
+                </div>
+            <% else %>
+                <div class="row project">
+                    <div class="col-md-8">
+                        <h2 class="project-title"><%= link_to proj.name, proj%></h2>
+                        <p class="project-desc project-sub-title"><%= proj.description %></p>
+                        <p class="time-ago project-sub_title">Created <% time_ago_in_words(proj.created_at) %> ago </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p><%= link_to complete_project_path(proj), method: :patch do %></p>
+                            <i class="fa fa-lg fa-check"></i>
+                        <% end %>
+                    </div>
+                    <div class="col-md-2">
+                        <p><%= link_to project_path(proj), method: :delete, data: { confirm: "Are you sure?" } do %> </p>
+                            <i class="fa fa-lg fa-trash"></i>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+<% else %>
+    <%= render 'layouts/static_landing_page' %>
+<% end %>
